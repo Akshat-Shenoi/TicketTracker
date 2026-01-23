@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Price tracking data
+last_price.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
