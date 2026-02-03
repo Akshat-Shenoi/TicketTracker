@@ -49,7 +49,8 @@ def send_price_alert(email_address, subject, message):
         
     except Exception as e:
         print(f"Error sending email: {e}")
-        print("Make sure your email credentials are correct in the .env file.")
+        print("Make sure EMAIL_FROM and EMAIL_PASSWORD environment variables are set correctly.")
+        print("For Gmail, use an App Password (not your regular password).")
         return False
 
 

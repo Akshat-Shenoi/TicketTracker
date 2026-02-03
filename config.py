@@ -16,8 +16,8 @@ EVENT_URL = os.getenv('EVENT_URL', '')
 MY_EMAIL = os.getenv('MY_EMAIL', '')
 
 # Email settings for sending notifications
-# Use your Gmail address (or any email that supports SMTP)
-EMAIL_FROM = os.getenv('EMAIL_FROM', '')
+# EMAIL_FROM defaults to MY_EMAIL if not set (they're usually the same)
+EMAIL_FROM = os.getenv('EMAIL_FROM', '') or MY_EMAIL
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD', '')  # Use an app password, not your regular password
 
 # SMTP server settings
@@ -40,7 +40,6 @@ def validate_config():
     required_vars = [
         ('EVENT_URL', EVENT_URL),
         ('MY_EMAIL', MY_EMAIL),
-        ('EMAIL_FROM', EMAIL_FROM),
         ('EMAIL_PASSWORD', EMAIL_PASSWORD),
     ]
     
@@ -51,7 +50,8 @@ def validate_config():
     
     if missing:
         print(f"Error: Missing required configuration: {', '.join(missing)}")
-        print("Please check your .env file.")
+        print("Set these as environment variables in your deployment platform (Railway, Render, etc.)")
+        print("Or create a .env file for local development.")
         return False
     
     return True
