@@ -4,6 +4,7 @@ Uses Flask and Chart.js for graphing.
 """
 
 import os
+import json
 from flask import Flask, render_template_string, jsonify
 import tracker
 
@@ -178,7 +179,7 @@ def dashboard():
         lowest_price=min(prices),
         highest_price=max(prices),
         data_points=len(prices),
-        price_data=history
+        price_data=json.dumps(history)
     )
 
 
